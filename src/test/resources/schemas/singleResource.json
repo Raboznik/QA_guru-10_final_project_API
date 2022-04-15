@@ -1,0 +1,108 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.com/object1650056276.json",
+  "title": "Root",
+  "type": "object",
+  "required": [
+    "data",
+    "support"
+  ],
+  "properties": {
+    "data": {
+      "$id": "#root/data",
+      "title": "Data",
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "year",
+        "color",
+        "pantone_value"
+      ],
+      "properties": {
+        "id": {
+          "$id": "#root/data/id",
+          "title": "Id",
+          "type": "integer",
+          "examples": [
+            2
+          ],
+          "default": 0
+        },
+        "name": {
+          "$id": "#root/data/name",
+          "title": "Name",
+          "type": "string",
+          "default": "",
+          "examples": [
+            "fuchsia rose"
+          ],
+          "pattern": "^.*$"
+        },
+        "year": {
+          "$id": "#root/data/year",
+          "title": "Year",
+          "type": "integer",
+          "examples": [
+            2001
+          ],
+          "default": 0
+        },
+        "color": {
+          "$id": "#root/data/color",
+          "title": "Color",
+          "type": "string",
+          "default": "",
+          "examples": [
+            "#C74375"
+          ],
+          "pattern": "^.*$"
+        },
+        "pantone_value": {
+          "$id": "#root/data/pantone_value",
+          "title": "Pantone_value",
+          "type": "string",
+          "default": "",
+          "examples": [
+            "17-2031"
+          ],
+          "pattern": "^.*$"
+        }
+      }
+    }
+  ,
+    "support": {
+      "$id": "#root/support",
+      "title": "Support",
+      "type": "object",
+      "required": [
+        "url",
+        "text"
+      ],
+      "properties": {
+        "url": {
+          "$id": "#root/support/url",
+          "title": "Url",
+          "type": "string",
+          "default": "",
+          "examples": [
+            "https://reqres.in/#support-heading"
+          ],
+          "pattern": "^.*$"
+        },
+        "text": {
+          "$id": "#root/support/text",
+          "title": "Text",
+          "type": "string",
+          "default": "",
+          "examples": [
+            "To keep ReqRes free, contributions towards server costs are appreciated!"
+          ],
+          "pattern": "^.*$"
+        }
+      }
+    }
+
+  }
+}

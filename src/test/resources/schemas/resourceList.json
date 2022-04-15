@@ -1,0 +1,154 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.com/object1650056245.json",
+  "title": "Root",
+  "type": "object",
+  "required": [
+    "page",
+    "per_page",
+    "total",
+    "total_pages",
+    "data",
+    "support"
+  ],
+  "properties": {
+    "page": {
+      "$id": "#root/page",
+      "title": "Page",
+      "type": "integer",
+      "examples": [
+        1
+      ],
+      "default": 0
+    },
+    "per_page": {
+      "$id": "#root/per_page",
+      "title": "Per_page",
+      "type": "integer",
+      "examples": [
+        6
+      ],
+      "default": 0
+    },
+    "total": {
+      "$id": "#root/total",
+      "title": "Total",
+      "type": "integer",
+      "examples": [
+        12
+      ],
+      "default": 0
+    },
+    "total_pages": {
+      "$id": "#root/total_pages",
+      "title": "Total_pages",
+      "type": "integer",
+      "examples": [
+        2
+      ],
+      "default": 0
+    },
+    "data": {
+      "$id": "#root/data",
+      "title": "Data",
+      "type": "array",
+      "default": [],
+      "items":{
+        "$id": "#root/data/items",
+        "title": "Items",
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "year",
+          "color",
+          "pantone_value"
+        ],
+        "properties": {
+          "id": {
+            "$id": "#root/data/items/id",
+            "title": "Id",
+            "type": "integer",
+            "examples": [
+              1
+            ],
+            "default": 0
+          },
+          "name": {
+            "$id": "#root/data/items/name",
+            "title": "Name",
+            "type": "string",
+            "default": "",
+            "examples": [
+              "cerulean"
+            ],
+            "pattern": "^.*$"
+          },
+          "year": {
+            "$id": "#root/data/items/year",
+            "title": "Year",
+            "type": "integer",
+            "examples": [
+              2000
+            ],
+            "default": 0
+          },
+          "color": {
+            "$id": "#root/data/items/color",
+            "title": "Color",
+            "type": "string",
+            "default": "",
+            "examples": [
+              "#98B2D1"
+            ],
+            "pattern": "^.*$"
+          },
+          "pantone_value": {
+            "$id": "#root/data/items/pantone_value",
+            "title": "Pantone_value",
+            "type": "string",
+            "default": "",
+            "examples": [
+              "15-4020"
+            ],
+            "pattern": "^.*$"
+          }
+        }
+      }
+
+    },
+    "support": {
+      "$id": "#root/support",
+      "title": "Support",
+      "type": "object",
+      "required": [
+        "url",
+        "text"
+      ],
+      "properties": {
+        "url": {
+          "$id": "#root/support/url",
+          "title": "Url",
+          "type": "string",
+          "default": "",
+          "examples": [
+            "https://reqres.in/#support-heading"
+          ],
+          "pattern": "^.*$"
+        },
+        "text": {
+          "$id": "#root/support/text",
+          "title": "Text",
+          "type": "string",
+          "default": "",
+          "examples": [
+            "To keep ReqRes free, contributions towards server costs are appreciated!"
+          ],
+          "pattern": "^.*$"
+        }
+      }
+    }
+
+  }
+}
