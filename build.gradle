@@ -10,7 +10,6 @@ repositories {
 
 def restAssured = '4.5.1',
     allureVersion = '2.17.3',
-    selenideVersion = '6.3.5',
     junitVersion = '5.8.2'
 
 allure {
@@ -26,7 +25,6 @@ allure {
 dependencies {
     testImplementation(
             'org.aspectj:aspectjweaver:1.9.9',
-            "com.codeborne:selenide:$selenideVersion",
             "io.qameta.allure:allure-selenide:$allureVersion",
             "io.rest-assured:json-schema-validator:$restAssured",
             "io.rest-assured:rest-assured:$restAssured",
