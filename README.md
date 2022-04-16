@@ -4,7 +4,7 @@
 
 ## ✔️ Реализованы четырнадцать тестов на разные API запросы :
 
-|| REST                 | Discription         | Status |    | REST                 | Discription          |Status |
+|| REST                 | Description         | Status |    | REST                 | Description          |Status |
 | :--| :------------------- | :-------------------| :---:  | :--| :------------------- | :------------------- | :---:
 |✓| **[GET]** user list  | Получение списка пользователей  |200|✓| **[GET]** single user | Получение одного пользователя |200|
 |✓| **[GET]** single user not found   | Пользователь не найден |404|✓| **[GET]** list resource | Получение списка ресурсов |200|
