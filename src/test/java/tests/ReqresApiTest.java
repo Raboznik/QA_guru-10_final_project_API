@@ -237,7 +237,7 @@ public class ReqresApiTest extends TestBase {
     @Test
     @DisplayName("[POST] login - unsuccessful")
     void postLoginUnsuccessfulTest() {
-        user.setEmail(cfgs.crateEmail());
+        user.setEmail("wrongEmail");
         responseUser = given()
                 .spec(requestSpec)
                 .body(user)
