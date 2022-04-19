@@ -1,6 +1,6 @@
 package tests;
 
-import models.LombokModel;
+import models.UserModel;
 import models.User;
 
 import org.junit.jupiter.api.DisplayName;
@@ -15,10 +15,12 @@ import static org.hamcrest.core.Is.is;
 
 public class ReqresApiTest extends TestBase {
 
+    UserModel userModel = new UserModel();
+    User user = new User();
+
     @Test
     @DisplayName("[GET] user list")
     void getUserListTest() {
-
         given()
                 .spec(requestSpec)
                 .when()
@@ -33,24 +35,23 @@ public class ReqresApiTest extends TestBase {
     @Test
     @DisplayName("[GET] single user")
     void getSingleUserTest() {
-        responseLombok =
-                given()
-                        .spec(requestSpec)
-                        .when()
-                        .get("/users/10")
-                        .then()
-                        .body(matchesJsonSchemaInClasspath("schemas/singleUser.json"))
-                        .spec(code200)
-                        .extract()
-                        .as(LombokModel.class);
+        userModel = given()
+                .spec(requestSpec)
+                .when()
+                .get("/users/10")
+                .then()
+                .body(matchesJsonSchemaInClasspath("schemas/singleUser.json"))
+                .spec(code200)
+                .extract()
+                .as(UserModel.class);
 
         Integer expectedId = 10;
         String expectedFirstName = "Byron";
         String expectedLastName = "Fields";
 
-        assertEquals(expectedId, responseLombok.getUser().getId());
-        assertEquals(expectedFirstName, responseLombok.getUser().getFirstName());
-        assertEquals(expectedLastName, responseLombok.getUser().getLastName());
+        assertEquals(expectedId, userModel.getUser().getId());
+        assertEquals(expectedFirstName, userModel.getUser().getFirstName());
+        assertEquals(expectedLastName, userModel.getUser().getLastName());
     }
 
     @Test
@@ -111,7 +112,7 @@ public class ReqresApiTest extends TestBase {
     void postCreateUserTest() {
         user.setFirstName(cfgs.createName());
         user.setJob(cfgs.createJob());
-        responseUser =
+        user =
                 given()
                         .spec(requestSpec)
                         .body(user)
@@ -122,8 +123,8 @@ public class ReqresApiTest extends TestBase {
                         .extract()
                         .as(User.class);
 
-        assertEquals(user.getFirstName(), responseUser.getFirstName());
-        assertEquals(user.getJob(), responseUser.getJob());
+        assertEquals(user.getFirstName(), user.getFirstName());
+        assertEquals(user.getJob(), user.getJob());
     }
 
     @Test
@@ -131,7 +132,7 @@ public class ReqresApiTest extends TestBase {
     void putUpdateUserTest() {
         user.setFirstName(cfgs.createName());
         user.setJob(cfgs.updateJob());
-        responseUser =
+        user =
                 given()
                         .spec(requestSpec)
                         .body(user)
@@ -142,7 +143,7 @@ public class ReqresApiTest extends TestBase {
                         .extract()
                         .as(User.class);
 
-        assertEquals(user.getJob(), responseUser.getJob());
+        assertEquals(user.getJob(), user.getJob());
     }
 
     @Test
@@ -150,7 +151,7 @@ public class ReqresApiTest extends TestBase {
     void patchUpdateUserTest() {
         user.setFirstName(cfgs.createName());
         user.setJob(cfgs.updateJob());
-        responseUser =
+        user =
                 given()
                         .spec(requestSpec)
                         .body(user)
@@ -161,7 +162,7 @@ public class ReqresApiTest extends TestBase {
                         .extract()
                         .as(User.class);
 
-        assertEquals(user.getJob(), responseUser.getJob());
+        assertEquals(user.getJob(), user.getJob());
     }
 
     @Test
@@ -180,7 +181,7 @@ public class ReqresApiTest extends TestBase {
     void postRegisterSuccessfulTest() {
         user.setEmail(cfgs.crateEmail());
         user.setPassword(cfgs.registerPassword());
-        responseUser =
+        user =
                 given()
                         .spec(requestSpec)
                         .body(user)
@@ -191,15 +192,15 @@ public class ReqresApiTest extends TestBase {
                         .extract()
                         .as(User.class);
 
-        assertThat(responseUser.getId()).isNotNull();
-        assertThat(responseUser.getToken()).isNotNull();
+        assertThat(user.getId()).isNotNull();
+        assertThat(user.getToken()).isNotNull();
     }
 
     @Test
     @DisplayName("[POST] register - unsuccessful")
     void postRegisterUnsuccessfulTest() {
         user.setEmail("wrongEmail");
-        responseUser =
+        user =
                 given()
                         .spec(requestSpec)
                         .body(user)
@@ -212,7 +213,7 @@ public class ReqresApiTest extends TestBase {
 
         String expectedError = "Missing password";
 
-        assertEquals(expectedError, responseUser.getError());
+        assertEquals(expectedError, user.getError());
     }
 
     @Test
@@ -220,7 +221,7 @@ public class ReqresApiTest extends TestBase {
     void postLoginSuccessfulTest() {
         user.setEmail(cfgs.crateEmail());
         user.setPassword(cfgs.loginPassword());
-        responseUser =
+        user =
                 given()
                         .spec(requestSpec)
                         .body(user)
@@ -231,14 +232,15 @@ public class ReqresApiTest extends TestBase {
                         .extract()
                         .as(User.class);
 
-        assertThat(responseUser.getToken()).isNotNull();
+        assertThat(user.getToken()).isNotNull();
     }
 
     @Test
     @DisplayName("[POST] login - unsuccessful")
     void postLoginUnsuccessfulTest() {
         user.setEmail("wrongEmail");
-        responseUser = given()
+        user =
+                given()
                 .spec(requestSpec)
                 .body(user)
                 .when()
@@ -250,6 +252,6 @@ public class ReqresApiTest extends TestBase {
 
         String expectedError = "Missing password";
 
-        assertEquals(expectedError, responseUser.getError());
+        assertEquals(expectedError, user.getError());
     }
 }

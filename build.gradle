@@ -25,7 +25,6 @@ allure {
 dependencies {
     testImplementation(
             'org.aspectj:aspectjweaver:1.9.9',
-            "io.qameta.allure:allure-selenide:$allureVersion",
             "io.rest-assured:json-schema-validator:$restAssured",
             "io.rest-assured:rest-assured:$restAssured",
             "io.qameta.allure:allure-rest-assured:$allureVersion",

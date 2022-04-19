@@ -10,7 +10,6 @@ import static io.restassured.http.ContentType.JSON;
 
 
 public class Specs {
-
     public static RequestSpecification requestSpec = with()
             .filter(withCustomTemplates())
             .basePath("/api")

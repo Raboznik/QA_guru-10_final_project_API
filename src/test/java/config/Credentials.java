@@ -8,7 +8,6 @@ import org.aeonbits.owner.Config;
         "classpath:config/credentials.properties"
 })
 public interface Credentials extends Config {
-
         @Key("create.name")
         String createName();
 
